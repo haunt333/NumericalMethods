@@ -50,7 +50,7 @@ double simpson(int n, double a, double b) { //метод симпсона
 	return result;
 }
 
-double montecarlo(int n, double a, double b) {
+double montecarlo(int n, double a, double b) { //метод монте-карыча
 	double result = 0;
 	//double h = 0.01;
 
