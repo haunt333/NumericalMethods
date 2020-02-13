@@ -8,86 +8,48 @@ double E05 = 1e-5;
 double E12 = 1e-12;
 double c;
 
-class Complex         // класс "Комплексное число"
+class Complex   
 {
 private:
-    double re, im;      // действительная и мнимая части
+    double re, im;     
 
 public:
-    // конструкторы 
-
-    Complex()
-    {
-    };
-
-    Complex(double r)
-    {
+    Complex() {};
+    Complex(double r) {
         re = r;
         im = 0;
     }
-
-    Complex(double r, double i)
-    {
+    Complex(double r, double i) {
         re = r;
         im = i;
     }
-
-    Complex(const Complex& c)   // конструктор копирования
-    {
+    Complex(const Complex& c) {
         re = c.re;
         im = c.im;
     }
-
-    // деструктор
-    ~Complex()
-    {
-    }
-
-    // остальные функции
-
-    // Модуль комплексного числа
-    double abs()
-    {
+    ~Complex() {}
+    double abs() {
         return sqrt(re * re + im * im);
     }
-
-    // оператор присваивания
-    Complex& operator = (Complex& c)
-    {
+    Complex& operator = (Complex& c) {
         re = c.re;
         im = c.im;
-
         return (*this);
     }
-
-
-    // оператор +=
-    Complex& operator += (Complex& c)
-    {
+    Complex& operator += (Complex& c) {
         re += c.re;
         im += c.im;
         return *this;
     }
-
-    // оператор сложения
-    Complex operator + (const Complex& c)
-    {
+    Complex operator + (const Complex& c) {
         return Complex(re + c.re, im + c.im);
     }
-
-    // оператор вычитания
-    Complex operator - (const Complex& c)
-    {
+    Complex operator - (const Complex& c) {
         return Complex(re - c.re, im - c.im);
     }
-
-    // оператор умножения
-    Complex operator * (const Complex& c)
-    {
+    Complex operator * (const Complex& c) {
         return Complex(re * c.re - im * c.im, re * c.im + im * c.re);
     }
-
-    // оператор деления
     Complex operator / (const Complex& c)
     {
         Complex temp;
@@ -98,22 +60,17 @@ public:
 
         return temp;
     }
-
-    // укажем дружественные операторы, которым мы разрешаем доступ
-    // к личным (private) данным
     friend ostream& operator<< (ostream&, const Complex&);
     friend istream& operator>> (istream&, Complex&);
 
 };
 
-// перегрузка оператора <<
 ostream& operator<< (ostream& out, const Complex& c)
 {
     out << "(" << c.re << ", " << c.im << ")";
     return out;
 }
 
-// перегрузка оператора >>
 istream& operator>> (istream& in, Complex& c)
 {
     in >> c.re >> c.im;
@@ -262,5 +219,3 @@ int main()
     newton_method_complex(z3, E05);
 
 }
-
-
